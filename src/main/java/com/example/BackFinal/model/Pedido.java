@@ -14,9 +14,7 @@ public class Pedido {
 
     private Date fechaPedido;
     private double total;
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private UserCliente cliente;
+
     public Pedido(Integer id, Date fechaPedido, double total) {
         this.id = id;
         this.fechaPedido = fechaPedido;

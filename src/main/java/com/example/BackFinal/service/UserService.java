@@ -1,8 +1,6 @@
 package com.example.BackFinal.service;
 
-import com.example.BackFinal.model.Producto;
-import com.example.BackFinal.model.User;
-import com.example.BackFinal.repository.ProductoRepository;
+import com.example.BackFinal.model.AppUser;
 import com.example.BackFinal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,26 +17,26 @@ public class UserService {
 
         this.userRepository = userRepository;
     }
-    public User GuardarUser(User user) {
+    public AppUser GuardarUser(AppUser appUser) {
 
-        return userRepository.save(user);
+        return userRepository.save(appUser);
     }
     public void eliminar(Integer id) {
 
         userRepository.deleteById(id);
     }
-    public Optional<User> buscar(Integer id) {
+    public Optional<AppUser> buscar(Integer id) {
 
         return userRepository.findById(id);
     }
-    public List<User> buscarTodos() {
+    public List<AppUser> buscarTodos() {
 
         return userRepository.findAll();
     }
 
-    public User actualizar(User user) {
+    public AppUser actualizar(AppUser appUser) {
 
-        return userRepository.save(user);
+        return userRepository.save(appUser);
     }
 }
 
