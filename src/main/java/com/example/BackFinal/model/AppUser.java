@@ -14,20 +14,21 @@ public class AppUser implements UserDetails {
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Integer id;
-    private String username;
     private String password;
+    private String name;
+    private String email;
     @Enumerated(EnumType.STRING)
-    private AppRole appRole;
+    private AppUserRole appRole;
     public AppUser() {
     }
-    public AppUser(Integer id, String username, String password) {
+
+    public AppUser(Integer id, String password, String name, String email, AppUserRole appRole) {
         this.id = id;
-        this.username = username;
         this.password = password;
+        this.name = name;
+        this.email = email;
         this.appRole = appRole;
     }
-    @Enumerated(EnumType.STRING)
-    private AppRole appUserRole;
 
     public Integer getId() {
         return id;
@@ -37,8 +38,19 @@ public class AppUser implements UserDetails {
         this.id = id;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
     public String getUsername() {
-        return username;
+        return null;
     }
 
     @Override
@@ -61,21 +73,31 @@ public class AppUser implements UserDetails {
         return false;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(appUserRole.name());
-        return Collections.singletonList(grantedAuthority);
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public AppUserRole getAppRole() {
+        return appRole;
+    }
+
+    public void setAppRole(AppUserRole appRole) {
+        this.appRole = appRole;
     }
 }
