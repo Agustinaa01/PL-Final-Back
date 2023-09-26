@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/productos")
+@RequestMapping("")
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @PostMapping()
+    @PostMapping("/productos")
     public ResponseEntity<Producto> registrarProducto(@RequestBody Producto producto) {
         return ResponseEntity.ok(productoService.GuardarProducto(producto));
     }
