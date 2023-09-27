@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
+@Table(name = "usr")
 public class AppUser  {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)

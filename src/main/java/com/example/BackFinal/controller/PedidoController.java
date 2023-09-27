@@ -15,7 +15,7 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @PostMapping()
+    @PostMapping("/crear")
     public ResponseEntity<Pedido> registrarPedido(@RequestBody Pedido pedido) {
         return ResponseEntity.ok(pedidoService.registrarPedido(pedido));
     }
@@ -26,7 +26,7 @@ public class PedidoController {
         return ResponseEntity.ok(pedido);
     }
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<Pedido> actualizar(@RequestBody Pedido pedido) {
         ResponseEntity<Pedido> response = null;
         if (pedido.getId() != null && pedidoService.buscar(pedido.getId()).isPresent())
