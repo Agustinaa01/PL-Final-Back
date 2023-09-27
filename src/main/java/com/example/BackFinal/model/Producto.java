@@ -1,6 +1,9 @@
 package com.example.BackFinal.model;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 @Table(name = "producto")
 public class Producto {
@@ -9,15 +12,77 @@ public class Producto {
     @Column(name = "id")
     private Integer id;
 
-    private String nombre;
-    private double precio;
+    private String name;
+    private double price;
+    private int stock;
+    private String description;
+    private String brand;
+    private String imageUrl;
 
-    public Producto(Integer id, String nombre, double precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
+    public Producto () {
     }
 
+    public Producto(Integer id, String name, double price, int stock, String description, String brand, String imageUrl, Pedido pedido) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.description = description;
+        this.brand = brand;
+        this.imageUrl = imageUrl;
+        this.pedido = pedido;
+    }
+
+    @ManyToOne //producto/pedido
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public Integer getId() {
         return id;
@@ -27,19 +92,5 @@ public class Producto {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
 }

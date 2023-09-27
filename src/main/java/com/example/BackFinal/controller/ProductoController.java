@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/productos")
+@RequestMapping("/productoss")
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @PostMapping()
+    @PostMapping("/crear")
     public ResponseEntity<Producto> registrarProducto(@RequestBody Producto producto) {
         return ResponseEntity.ok(productoService.GuardarProducto(producto));
     }
@@ -28,7 +28,7 @@ public class ProductoController {
         return ResponseEntity.ok(producto);
     }
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<Producto> actualizar(@RequestBody Producto producto) {
         ResponseEntity<Producto> response = null;
         if (producto.getId() != null && productoService.buscar(producto.getId()).isPresent())
