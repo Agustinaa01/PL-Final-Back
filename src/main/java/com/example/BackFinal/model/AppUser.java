@@ -16,25 +16,23 @@ public class AppUser  {
     private String password;
     private String name;
     private String email;
-    private String surname;
+
     @Enumerated(EnumType.STRING)
     private AppUserRole appRole;
     public AppUser() {
     }
 
-    public AppUser(Integer id, String password, String name, String email, String surname, AppUserRole appRole, List<Pedido> pedidos) {
+    @OneToMany() //relacion usuario/pedido
+        private List<Pedido> pedidos;
+
+    public AppUser(Integer id, String password, String name, String email, AppUserRole appRole, List<Pedido> pedidos) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.email = email;
-        this.surname = surname;
         this.appRole = appRole;
         this.pedidos = pedidos;
     }
-
-    @OneToMany(mappedBy = "usuario") //relacion usuario/pedido
-    private List<Pedido> pedidos;
-
 
     public Integer getId() {
         return id;
@@ -44,7 +42,9 @@ public class AppUser  {
         this.id = id;
     }
 
-
+    public String getPassword() {
+        return password;
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -72,5 +72,13 @@ public class AppUser  {
 
     public void setAppRole(AppUserRole appRole) {
         this.appRole = appRole;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

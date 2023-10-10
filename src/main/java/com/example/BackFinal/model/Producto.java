@@ -11,31 +11,34 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
     private String name;
     private double price;
-    private int stock;
     private String description;
+    private String category;
     private String brand;
     private String imageUrl;
 
     public Producto () {
     }
 
-    public Producto(Integer id, String name, double price, int stock, String description, String brand, String imageUrl, Pedido pedido) {
+    public Producto(Integer id, String name, double price, int stock, String description, String brand, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.stock = stock;
+        this.category = category;
         this.description = description;
         this.brand = brand;
         this.imageUrl = imageUrl;
-        this.pedido = pedido;
     }
 
-    @ManyToOne //producto/pedido
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,12 +55,12 @@ public class Producto {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
+    public int getCategory() {
+        return category
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setCategory(int stock) {
+        this.category = category;
     }
 
     public String getDescription() {
@@ -83,14 +86,5 @@ public class Producto {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
 
 }

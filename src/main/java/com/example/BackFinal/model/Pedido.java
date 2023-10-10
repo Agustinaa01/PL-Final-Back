@@ -12,34 +12,28 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    private int quantity;
     private Date date;
-    private double total;
     private String state;
 
-    public Pedido(Integer id, int quantity, Date date, double total, String state, AppUser usuario, List<Producto> productos) {
+    @OneToMany() //relacion pedido/producto
+        private List<Producto> productos;
+    public Pedido() {
+    }
+
+    public Pedido(Integer id, Date date, String state, List<Producto> productos) {
         this.id = id;
-        this.quantity = quantity;
         this.date = date;
-        this.total = total;
         this.state = state;
-        this.usuario = usuario;
         this.productos = productos;
     }
 
-    @ManyToOne //relacion usuario/pedido
-    @JoinColumn(name = "usuario_id")
-    private AppUser usuario;
-    @OneToMany(mappedBy = "pedido") //relacion pedido/producto
-    private List<Producto> productos;
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public Integer getId() {
+        return id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
 
     public Date getDate() {
         return date;
@@ -57,25 +51,11 @@ public class Pedido {
         this.state = state;
     }
 
-    public Pedido() {
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public Integer getId() {
-        return id;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
 }

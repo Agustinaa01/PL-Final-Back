@@ -1,6 +1,7 @@
 package com.example.BackFinal.service;
 
 import com.example.BackFinal.model.Pedido;
+import com.example.BackFinal.model.Producto;
 import com.example.BackFinal.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class PedidoService {
     public PedidoService(PedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
     }
-    public Pedido registrarPedido(Pedido pedido) {
+    public Pedido GuardarPedido(Pedido pedido) {
         return pedidoRepository.save(pedido);
     }
     public void eliminar(Integer id) {
