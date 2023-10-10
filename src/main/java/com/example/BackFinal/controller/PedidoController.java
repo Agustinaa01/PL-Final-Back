@@ -1,6 +1,7 @@
 package com.example.BackFinal.controller;
 
 import com.example.BackFinal.model.Pedido;
+import com.example.BackFinal.model.Producto;
 import com.example.BackFinal.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ public class PedidoController {
 
     @PostMapping("/crear")
     public ResponseEntity<Pedido> registrarPedido(@RequestBody Pedido pedido) {
-        return ResponseEntity.ok(pedidoService.registrarPedido(pedido));
+        return ResponseEntity.ok(pedidoService.GuardarPedido(pedido));
     }
 
     @GetMapping("/{id}")
