@@ -21,7 +21,7 @@ public class Producto {
     public Producto () {
     }
 
-    public Producto(Integer id, String name, double price, int stock, String description, String brand, String imageUrl) {
+    public Producto(Integer id, String name, double price, String category, String description, String brand, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -55,13 +55,6 @@ public class Producto {
         this.price = price;
     }
 
-    public int getCategory() {
-        return category
-    }
-
-    public void setCategory(int stock) {
-        this.category = category;
-    }
 
     public String getDescription() {
         return description;
