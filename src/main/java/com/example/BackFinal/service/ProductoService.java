@@ -1,5 +1,6 @@
 package com.example.BackFinal.service;
 
+import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.Pedido;
 import com.example.BackFinal.model.Producto;
 import com.example.BackFinal.repository.PedidoRepository;
@@ -23,8 +24,9 @@ public class ProductoService {
 
         return productoRepository.save(producto);
     }
-    public void eliminar(Integer id) {
-
+    public void eliminar(Integer id) throws ResourceNotFoundException {
+        if (buscar(id).isEmpty())
+            throw new ResourceNotFoundException("No existe el producto con el id: " + id);
         productoRepository.deleteById(id);
     }
     public Optional<Producto> buscar(Integer id) {

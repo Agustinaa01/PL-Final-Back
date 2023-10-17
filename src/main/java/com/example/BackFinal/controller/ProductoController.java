@@ -1,6 +1,7 @@
 
 package com.example.BackFinal.controller;
 
+import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.Producto;
 import com.example.BackFinal.service.ProductoService;
 import org.hibernate.id.IntegralDataTypeHolder;
@@ -39,7 +40,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response = null;
         if (productoService.buscar(id).isPresent()) {
             productoService.eliminar(id);

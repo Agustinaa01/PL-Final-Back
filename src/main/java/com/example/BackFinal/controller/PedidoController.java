@@ -1,5 +1,6 @@
 package com.example.BackFinal.controller;
 
+import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.Pedido;
 import com.example.BackFinal.model.Producto;
 import com.example.BackFinal.service.PedidoService;
@@ -38,7 +39,7 @@ public class PedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response = null;
         if (pedidoService.buscar(id).isPresent()) {
             pedidoService.eliminar(id);
