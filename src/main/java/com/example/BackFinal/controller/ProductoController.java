@@ -40,15 +40,14 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
-        ResponseEntity<String> response = null;
-        if (productoService.buscar(id).isPresent()) {
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+        try {
             productoService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Producto Eliminado");
+        } catch (ResourceNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se pudo encontrar el usuario con el ID proporcionado: " + e.getMessage());
+
         }
-        return response;
     }
 
     @GetMapping

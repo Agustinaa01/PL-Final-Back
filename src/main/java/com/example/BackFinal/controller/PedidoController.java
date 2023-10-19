@@ -39,15 +39,15 @@ public class PedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Integer id) throws ResourceNotFoundException {
-        ResponseEntity<String> response = null;
-        if (pedidoService.buscar(id).isPresent()) {
-            pedidoService.eliminar(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    public ResponseEntity<String> eliminar(@PathVariable Integer id) {
+        try {
+             pedidoService.eliminar(id);
+              return ResponseEntity.status(HttpStatus.NO_CONTENT).body(" Pedido Eliminado");
+        } catch ( ResourceNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se pudo encontrar el pedido con el ID proporcionado: " + e.getMessage());
         }
-        return response;
+
+
     }
 
     @GetMapping
