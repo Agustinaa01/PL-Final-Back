@@ -33,6 +33,13 @@ public class AppUser  {
         this.appRole = appRole;
         this.pedidos = pedidos;
     }
+    public AppUser(String password, String name, String email, AppUserRole appRole, List<Pedido> pedidos) {
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.appRole = appRole;
+        this.pedidos = pedidos;
+    }
 
     public Integer getId() {
         return id;

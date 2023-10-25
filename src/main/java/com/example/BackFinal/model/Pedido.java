@@ -26,6 +26,11 @@ public class Pedido {
         this.state = state;
         this.productos = productos;
     }
+    public Pedido(Date date, String state, List<Producto> productos) {
+        this.date = date;
+        this.state = state;
+        this.productos = productos;
+    }
 
     public Integer getId() {
         return id;

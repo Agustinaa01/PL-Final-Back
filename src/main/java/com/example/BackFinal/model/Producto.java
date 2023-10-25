@@ -30,6 +30,14 @@ public class Producto {
         this.brand = brand;
         this.imageUrl = imageUrl;
     }
+    public Producto(String name, double price, String category, String description, String brand, String imageUrl) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.description = description;
+        this.brand = brand;
+        this.imageUrl = imageUrl;
+    }
 
     public Integer getId() {
         return id;

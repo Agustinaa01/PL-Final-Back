@@ -25,7 +25,7 @@ public class UserService {
     public void eliminar(Integer id) throws ResourceNotFoundException {
         if (buscar(id).isEmpty())
             throw new ResourceNotFoundException("No existe el usuario con el id: " + id);
-            userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
     public Optional<AppUser> buscar(Integer id)  {
 
