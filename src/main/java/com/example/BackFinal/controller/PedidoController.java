@@ -19,7 +19,7 @@ public class PedidoController {
 
     @PostMapping("/crear")
     public ResponseEntity<Pedido> registrarPedido(@RequestBody Pedido pedido) {
-        return ResponseEntity.ok(pedidoService.GuardarPedido(pedido));
+        return ResponseEntity.ok(pedidoService.guardarPedido(pedido));
     }
 
     @GetMapping("/{id}")
