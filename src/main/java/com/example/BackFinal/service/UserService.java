@@ -21,7 +21,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
     public AppUser GuardarUser(AppUser appUser) {
-
         return userRepository.save(appUser);
     }
     public void eliminar(Integer id) throws ResourceNotFoundException {
