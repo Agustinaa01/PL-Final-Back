@@ -1,6 +1,5 @@
 package com.example.BackFinal.service;
 
-import com.example.BackFinal.exceptions.BadRequestException;
 import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.AppUser;
 import com.example.BackFinal.repository.UserRepository;
