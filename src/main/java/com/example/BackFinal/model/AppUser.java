@@ -1,14 +1,17 @@
 package com.example.BackFinal.model;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Table(name = "usr")
-public class AppUser  {
+public class AppUser //implements UserDetails
+        {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
@@ -25,14 +28,14 @@ public class AppUser  {
     @OneToMany() //relacion usuario/pedido
         private List<Pedido> pedidos;
 
-    public AppUser(Integer id, String password, String name, String email, AppUserRole appRole, List<Pedido> pedidos) {
-        this.id = id;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.appRole = appRole;
-        this.pedidos = pedidos;
-    }
+    //public AppUser(Integer id, String password, String name, String email, AppUserRole appRole, List<Pedido> pedidos) {
+      //  this.id = id;
+        //this.password = password;
+        //this.name = name;
+        //this.email = email;
+        //this.appRole = appRole;
+        //this.pedidos = pedidos;
+    //}
     public AppUser(String password, String name, String email, AppUserRole appRole, List<Pedido> pedidos) {
         this.password = password;
         this.name = name;
@@ -41,16 +44,19 @@ public class AppUser  {
         this.pedidos = pedidos;
     }
 
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
@@ -87,5 +93,17 @@ public class AppUser  {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userName='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", appUserRole=" +  appRole+
+                '}';
     }
 }

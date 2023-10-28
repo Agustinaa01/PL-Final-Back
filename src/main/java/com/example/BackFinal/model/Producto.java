@@ -1,7 +1,6 @@
 package com.example.BackFinal.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -88,4 +87,16 @@ public class Producto {
         this.imageUrl = imageUrl;
     }
 
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
+                ", brand='" + brand + '\'' +
+                ", imagen='" + imageUrl + '\'' +
+                '}';
+    }
 }

@@ -1,9 +1,7 @@
 package com.example.BackFinal.model;
-
-import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
-
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pedido")
@@ -62,5 +60,14 @@ public class Pedido {
 
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

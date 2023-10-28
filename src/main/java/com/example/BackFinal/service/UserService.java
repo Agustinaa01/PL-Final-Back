@@ -5,6 +5,9 @@ import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.AppUser;
 import com.example.BackFinal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +19,6 @@ public class UserService {
 
     @Autowired
     public UserService(UserRepository userRepository) {
-
         this.userRepository = userRepository;
     }
     public AppUser GuardarUser(AppUser appUser) {
@@ -42,5 +44,7 @@ public class UserService {
 
         return userRepository.save(appUser);
     }
+
+
 }
 

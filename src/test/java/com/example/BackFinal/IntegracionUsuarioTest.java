@@ -43,7 +43,8 @@ public class IntegracionUsuarioTest {
     @Test
     public void listarProducto() throws Exception {
         this.cargarDataSet();
-        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/pedidos/{id}", 2).accept(MediaType.APPLICATION_JSON))
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/pedidos/{id}", 2
+                ).accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
