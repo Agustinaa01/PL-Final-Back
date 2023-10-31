@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Autowired
@@ -43,6 +43,9 @@ public class UserService {
         return userRepository.save(appUser);
     }
 
-
+    @Override
+    public UserDetails loadUserByUsername(String email){
+        return userRepository.findByEmail(email).get();
+    }
 }
 

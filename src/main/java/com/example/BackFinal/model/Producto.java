@@ -1,8 +1,7 @@
 package com.example.BackFinal.model;
 
-import jakarta.persistence.*;
 import java.util.List;
-
+import jakarta.persistence.*;
 @Entity
 @Table(name = "producto")
 public class Producto {

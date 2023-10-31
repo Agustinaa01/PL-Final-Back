@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
-    private boolean usuarioRegistrado; // Asegúrate de establecer este valor según el estado del usuario
 
 
     @Autowired
@@ -22,9 +21,6 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
     public Pedido guardarPedido(Pedido pedido) {
-        if (!usuarioRegistrado) {
-            throw new BadRequestException("No se puede realizar el pedido. El usuario no está autenticado.");
-        }
         return pedidoRepository.save(pedido);
     }
     public void eliminar(Integer id) throws ResourceNotFoundException {

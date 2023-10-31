@@ -50,7 +50,7 @@ public class PedidoController {
 
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Pedido>> buscarTodos(){
         return ResponseEntity.ok(pedidoService.buscarTodos());
     }

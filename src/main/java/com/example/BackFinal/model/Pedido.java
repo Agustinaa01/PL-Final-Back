@@ -1,7 +1,9 @@
 package com.example.BackFinal.model;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "pedido")

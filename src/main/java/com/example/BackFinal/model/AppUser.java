@@ -2,15 +2,13 @@ package com.example.BackFinal.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
+import jakarta.persistence.*;
 @Entity
 @Table(name = "usr")
-public class AppUser //implements UserDetails
+public class AppUser implements UserDetails
         {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
@@ -45,13 +43,42 @@ public class AppUser //implements UserDetails
     }
 
 
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                return null;
+            }
 
-    public String getPassword() {
+            public String getPassword() {
         return password;
     }
 
+            @Override
+            public String getUsername() {
+                return email;
+            }
 
-    public Integer getId() {
+            @Override
+            public boolean isAccountNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isAccountNonLocked() {
+                return true;
+            }
+
+            @Override
+            public boolean isCredentialsNonExpired() {
+                return true;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return true;
+            }
+
+
+            public Integer getId() {
         return id;
     }
 
