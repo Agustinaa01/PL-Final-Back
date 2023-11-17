@@ -13,6 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pedidos")
+@CrossOrigin
+
+
 public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
@@ -49,7 +52,6 @@ public class PedidoController {
 
 
     }
-
     @GetMapping("/")
     public ResponseEntity<List<Pedido>> buscarTodos(){
         return ResponseEntity.ok(pedidoService.buscarTodos());

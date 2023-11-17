@@ -16,6 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin
+
 public class UsrController {
     @Autowired
     private UserService userService;
@@ -52,7 +54,7 @@ public class UsrController {
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<AppUser>> buscarTodos(){
         return ResponseEntity.ok(userService.buscarTodos());
     }

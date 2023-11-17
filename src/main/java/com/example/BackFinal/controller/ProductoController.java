@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
@@ -32,10 +33,7 @@ public class ProductoController {
     @PutMapping("/{id}")
     public ResponseEntity<Producto> actualizar(@RequestBody Producto producto) {
         ResponseEntity<Producto> response = null;
-        if (producto.getId() != null && productoService.buscar(producto.getId()).isPresent())
-            response = ResponseEntity.ok(productoService.actualizar(producto));
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        response = ResponseEntity.ok(productoService.actualizar(producto));
         return response;
     }
 
@@ -50,7 +48,7 @@ public class ProductoController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Producto>> buscarTodos(){
         return ResponseEntity.ok(productoService.buscarTodos());
     }

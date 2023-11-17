@@ -37,6 +37,14 @@ public class Producto {
         this.imageUrl = imageUrl;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public Integer getId() {
         return id;
     }

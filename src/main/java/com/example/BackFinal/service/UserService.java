@@ -4,16 +4,12 @@ import com.example.BackFinal.exceptions.ResourceNotFoundException;
 import com.example.BackFinal.model.AppUser;
 import com.example.BackFinal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService  {
     private final UserRepository userRepository;
 
     @Autowired
@@ -43,9 +39,5 @@ public class UserService implements UserDetailsService {
         return userRepository.save(appUser);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email){
-        return userRepository.findByEmail(email).get();
-    }
-}
+   }
 
